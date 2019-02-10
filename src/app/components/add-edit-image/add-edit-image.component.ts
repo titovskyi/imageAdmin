@@ -99,11 +99,13 @@ export class AddEditImageComponent implements OnInit {
       };
       this.imagesService.editImage(submitedForm);
     } else {
+
+      const id = this.imagesStore.length ? this.imagesStore[this.imagesStore.length - 1].id + 1 : 1;
       const submitedForm: Image = {
         ...this.imageForm.value,
         image: this.baseImage,
         isHovered: false,
-        id: this.imagesStore[this.imagesStore.length - 1].id + 1
+        id: id
       };
       this.imagesService.addImage(submitedForm);
     }

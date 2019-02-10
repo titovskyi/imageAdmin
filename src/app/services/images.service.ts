@@ -34,14 +34,13 @@ export class ImagesService {
       return this.http.post(this.url, image);
     }
 
-    const imagesStore = JSON.parse(localStorage.getItem('images'));
+    const imagesStore = JSON.parse(localStorage.getItem('images')) || [];
     imagesStore.push(image);
 
     localStorage.setItem('images', JSON.stringify(imagesStore));
   }
 
   editImage(image: Image) {
-    console.log(image, 'image edit');
     if (this.url) {
       return this.http.put(this.url + '/' + image.id, image);
     }
