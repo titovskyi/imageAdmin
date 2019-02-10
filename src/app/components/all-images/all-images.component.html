@@ -1,0 +1,16 @@
+<div class="container wrapper">
+  <div class="upload-image-container" *ngFor="let image of images; let i = index;">
+    <app-image-with-tooltip 
+      [image]="image" 
+      [baseImage]="image.image" 
+      width="300px" 
+      pointer="pointer"
+      (showDetails)='showDetails($event)'
+    >
+    </app-image-with-tooltip>
+    <div class="buttons">
+      <button class="btn btn-primary" (click)="editImage(image.id)">Edit</button>
+      <button class="btn btn-danger" (click)="deleteImage(image.id)">Delete</button>
+    </div>
+  </div>
+</div>

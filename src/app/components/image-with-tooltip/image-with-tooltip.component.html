@@ -1,0 +1,17 @@
+<div class="upload-image-container" [ngStyle]="{'width': width}">
+  <img 
+    [src]="baseImage || ''" class="upload-image" 
+    (mouseover)="hover=true"
+    (mouseleave)="hover=false"
+    [ngStyle]="{'width': width, 'cursor': pointer}"
+    (click)="imageDetails(image.id)"
+  >
+  <p 
+    *ngIf="image.title" 
+    class="tooltip-text"
+    [ngStyle]="{'top': image.positionTop + '%', 'left': image.positionLeft + '%'}"
+    [ngClass]="{'display-tooltip': showTooltion ? true : hover}"
+    (mouseover)="hover=true"
+    (mouseleave)="hover=false"
+  >{{image.title}}</p>
+</div>

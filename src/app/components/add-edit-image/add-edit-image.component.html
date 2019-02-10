@@ -1,0 +1,40 @@
+<div class="container">
+
+
+  <div *ngIf="baseImage;else other_content" class="image-view">
+    <app-image-with-tooltip 
+      [image]="imageForm.value" 
+      [baseImage]="baseImage" 
+      width="300px"
+      showTooltion=true
+    >
+    </app-image-with-tooltip>
+  </div>
+  
+  <ng-template #other_content>
+      <div class="empty-image">
+        Select Image!
+      </div>
+  </ng-template>
+  <div class="row">
+    <form [formGroup]="imageForm" class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4 image-form" (ngSubmit)="onSubmit()">
+      <input type="file" accept="*" name="image-file" formControlName="image" (change)="imageConvertToBase($event)">
+      <label class="image-form__label">
+        Set Image Title:
+        <br>
+        <input class="input-style" type="text" name="title" formControlName="title">
+      </label>
+      <label>
+        Top position (value: 0 - 87), %:
+        <input class="input-style" type="number" name="position-top" formControlName="positionTop" (keyup)="checkValue('top')">
+      </label>
+      <label>
+        Left position (value: -10 - 60), %:
+        <input class="input-style" type="number" name="position-left" formControlName="positionLeft" (keyup)="checkValue('left')">
+      </label>
+      <button type="submit" class="btn btn-primary" [disabled]="!imageForm.valid">Submit</button>
+  </form>
+  </div>
+  
+  
+</div>
